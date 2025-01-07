@@ -1,0 +1,326 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    text-align: center;
+    color: green;
+    margin-bottom: 20px;
+}
+
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+
+.highlight {
+    background-color: yellow; /* Колір підсвічування */
+    transition: background-color 0.5s; /* Анімація */
+}
+
+
+
+
+
+.product-section {
+    margin: 20px auto;
+    width: 90%;
+}
+
+.products-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Центрування контейнера */
+    margin-bottom: 40px; /* Додано простір між секціями */
+}
+
+.products-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-card {
+    min-width: 220px; /* Збільшено для кращої видимості */
+    margin: 0 10px; /* Відступ між товарами */
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Додано внутрішній відступ */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.button-group {
+    margin-top: 10px; /* Простір між текстом і кнопками */
+}
+
+.buy-btn, .details-btn {
+    background-color: green; /* Змінено на зелений */
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Зменшено для кращого вигляду */
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px; /* Зменшено */
+    transition: background-color 0.3s ease; /* Додано ефект зміни кольору */
+}
+
+.buy-btn:hover, .details-btn:hover {
+    background-color: darkgreen; /* Зміна кольору при наведенні */
+}
+
+.carousel-btn {
+    background-color: rgba(128, 128, 128, 0.8);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(128, 128, 128, 1);
+}
+
+.brand-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.brand-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.brand-item img {
+    width: 80px; /* Зробити картинки маленькими */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.brand-item img:hover {
+    transform: scale(1.1); /* Збільшення при наведенні */
+}
+
+.hidden-brands {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.toggle-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: darkgreen;
+}
+
+
+* {box-sizing: border-box;}
+body {font-family: Arial, sans-serif;}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+
+
+
+
+
+
+
+.nutrition-calculator {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.nutrition-calculator label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.nutrition-calculator input, .nutrition-calculator select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+/* CSS для блоку з відгуками */
+.reviews-section {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.reviews-carousel {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.review-item {
+    flex: 0 0 300px;
+    margin: 0 15px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.footer {
+    background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+    padding: 20px;
+    text-align: center;
+    transition: background 0.5s ease;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer h3 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.footer p,
+.footer a {
+    color: #555;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer a:hover {
+    color: #28a745;
+    transform: translateY(-3px);
+}
+
+.contact-info i,
+.social-media i {
+    margin-right: 10px;
+    color: #28a745; /* Adjust icon color */
+    font-size: 24px;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media a i {
+    font-size: 20px;
+}
+
+.social-media a:hover {
+    color: #28a745; /* Change to the desired hover color */
+    transform: translateY(-3px);
+}

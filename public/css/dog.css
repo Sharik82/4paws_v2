@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4; /* Світло-сірий фон */
+}
+
+.header {
+    background-color: #28a745; /* Зелений колір */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Адаптивні плитки */
+    gap: 20px;
+    padding: 20px;
+}
+
+.category-card {
+    background-color: #fff;
+    border-radius: 12px; /* Заокруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    cursor: pointer; /* Додаємо курсор вказівника */
+}
+
+.category-card img {
+    width: 100%; /* Ширина зображення */
+    height: 180px; /* Висота зображення */
+    object-fit: cover; /* Збереження пропорцій зображення */
+}
+
+.category-card h3 {
+    margin: 10px 0;
+    font-size: 1.5em; /* Розмір шрифту заголовка */
+    color: #333;
+}
+
+.category-card a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff; /* Білий текст */
+    background-color: #28a745; /* Зелений фон */
+    border-radius: 25px; /* Заокруглені кнопки */
+    padding: 10px 15px; /* Внутрішній відступ */
+    margin: 10px 0; /* Відступ зверху і знизу */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.category-card a:hover {
+    background-color: #218838; /* Темніший зелений при наведенні */
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Важливо: додаємо pointer-events: none для псевдоелемента */
+.category-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none; /* Це дозволяє кліки через псевдоелемент */
+}
+
+.category-card:hover::after {
+    opacity: 1;
+}

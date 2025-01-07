@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.cart-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.remove-btn {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #ff4d4d;
+    transform: translateY(-3px);
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.checkout-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #388E3C;
+    transform: translateY(-3px);
+}
+
+/* Анімація для динамічності */
+@keyframes item-added {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cart-item {
+    animation: item-added 0.5s ease-in-out;
+}
+.modal {
+    display: none; /* Сховати модальне вікно за замовчуванням */
+    position: fixed;
+    z-index: 1; /* Задає порядок шару */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ширина 100% */
+    height: 100%; /* Висота 100% */
+    overflow: auto; /* Додати прокрутку, якщо потрібно */
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Центрування модального вікна */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 80%; /* Ширина модального вікна */
+    max-width: 500px; /* Максимальна ширина */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #388E3C;
+    transform: translateY(-3px);
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column; /* Вертикальне розташування елементів */
+    align-items: center; /* Центрування по горизонталі */
+    justify-content: center; /* Центрування по вертикалі */
+    margin: auto; /* Автоматичні відступи для центрування */
+    padding: 20px; /* Внутрішні відступи */
+    background-color: #fff; /* Білий фон */
+    border-radius: 15px; /* Заокруглення */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тінь для ефекту глибини */
+    max-width: 500px; /* Максимальна ширина меню */
+    width: 90%; /* Ширина меню */
+    position: relative; /* Для позиціонування */
+    top: 50%; /* Відстань від верху */
+    transform: translateY(-50%); /* Переміщення на піввисоти для центрирування */
+}

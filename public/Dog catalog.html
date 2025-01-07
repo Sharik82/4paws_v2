@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин кормів для тварин</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="/Users/denisshargorodsky/Desktop/:Project4Paws/src:/images:/testlogo.jpg"> 
+    <style>   
+ body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+.header {
+            background-color: #fff;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #28a745;
+            border-radius: 20px;
+            padding: 5px;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .search-container input {
+            width: 180px;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #333;
+            transition: width 0.3s ease;
+        }
+
+        .search-container input:focus {
+            width: 250px;
+            transition: width 0.4s ease;
+        }
+
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #28a745;
+            font-size: 18px;
+            margin-left: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            color: #000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .nav a:hover {
+            color: #28a745;
+            transform: translateY(-3px);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-btn {
+            background: #28a745;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-left: 15px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background: #218838;
+            transform: scale(1.1);
+        }
+
+        /* Стилі для нових елементів */
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #28a745;
+            font-size: 24px;
+            margin-left: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #218838;
+            transform: scale(1.2);
+        }
+
+        .night-mode-toggle i, .lang-switch i, .cart-icon i {
+            transition: transform 0.3s ease;
+        }
+
+        .night-mode-toggle:hover i, .lang-switch:hover i, .cart-icon:hover i {
+            transform: rotate(20deg);
+        }
+
+        /* Темна тема */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .header.dark-mode {
+            background-color: #222;
+        }
+
+        .dashboard-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 30px;
+            width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 1001;
+        }
+
+        .menu-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items li {
+            margin: 10px 0; /* Зменшено */
+        }
+
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            padding: 8px; /* Зменшено */
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-items a:hover {
+            background-color: #e0f5e9;
+            color: #27ae60;
+        }
+
+        .menu-items a .icon {
+            margin-right: 10px;
+            font-size: 18px; /* Зменшено */
+            color: #27ae60;
+        }
+        .dashboard-menu.dark-mode {
+            background-color: #444;
+        }
+
+/* Основна сітка */
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.filters {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 30px;
+}
+
+.filters h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2d8a2d;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+}
+
+.filter-group input[type="number"],
+.filter-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Стилі для категорій */
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 20px 20px 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.category-list li {
+    margin: 0;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.category-list li:last-child {
+    border-bottom: none;
+}
+
+.category-list a {
+    text-decoration: none;
+    color: #28a745;
+    transition: color 0.3s;
+}
+
+.category-list a:hover {
+    color: #333;
+}
+
+/* Сітка товарів */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 плиток у рядку */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Сітка товарів */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 плиток у рядку */
+    gap: 15px; /* Менший відступ для балансу */
+    padding: 20px;
+}
+
+/* Картка товару */
+/* Стилі для посилань */
+.product-card {
+    display: block; /* картка займає всю площу */
+    text-decoration: none; /* прибирає підкреслення */
+    color: inherit; /* використовує колір тексту від батьків */
+}
+
+/* Якщо хочете переконатись, що посилання також не впливають на інші стилі */
+.product-card a {
+    display: block; /* щоб посилання займало всю площу картки */
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Контейнер зображень */
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Трохи збільшена висота */
+    overflow: hidden;
+}
+
+/* Основне зображення */
+.product-image img.default-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Зображення для hover */
+.product-image img.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Приховане за замовчуванням */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Ефект при наведенні */
+.product-card:hover img.default-image {
+    opacity: 0; /* Зникає основне зображення */
+    transform: scale(1.05); /* Збільшення зображення */
+}
+
+.product-card:hover img.hover-image {
+    opacity: 1; /* Показується зображення при наведенні */
+    transform: scale(1); /* Залишається оригінального розміру */
+}
+
+
+/* Інформація про товар */
+.product-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Інформація займає доступне місце */
+}
+
+.product-info h3 {
+    font-size: 16px; /* Трохи менший шрифт для збалансованого вигляду */
+    margin: 10px 0;
+    color: #000000;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.5; /* Збільшений міжрядковий інтервал */
+    text-align: center; /* Вирівнювання тексту по центру */
+}
+
+
+
+.product-info p {
+    margin: 8px 0; /* Додати відступи між елементами */
+    font-size: 14px; /* Оптимальний розмір тексту */
+    color: #555;
+}
+
+    </style>
+</head>
+<body>
+    
+   
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/header/logo.jpg" alt="Лого">
+                <span>4 Paws</span>
+            </a>
+            <div class="search-container">
+                <input type="text" placeholder="Пошук...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="Dog product category.html"><img src="img/header/dog-solid.svg" alt="Собакам">Собакам</a>
+            <a href="#"><img src="img/header/cat-solid.svg" alt="Котам">Котам</a>
+            <a href="#"><img src="img/header/mouse.png" alt="Гризунам">Гризунам</a>
+            <a href="#"><img src="img/header/fish-solid.svg" alt="Рибам">Рибам</a>
+            <a href="#"><img src="img/header/dove-solid.svg" alt="Птахам">Птахам</a>
+            <a href="#"><img src="img/header/staff-snake-solid.svg" alt="Рептиліям">Рептиліям</a>
+        </nav>
+        <div class="user-menu">
+            <button class="menu-btn" onclick="toggleDashboardMenu()">
+                <i class="fas fa-user"></i>
+            </button>
+
+            <!-- Іконка кошика -->
+            <button class="icon-btn cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+
+            <!-- Перемикач нічної теми -->
+            <button class="icon-btn night-mode-toggle" onclick="toggleNightMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Перемикач мови -->
+            <button class="icon-btn lang-switch" onclick="toggleLanguage()">
+                <i class="fas fa-globe"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard-menu" id="dashboardMenu">
+        <div class="dashboard-header">
+            <h2>Особистий кабінет</h2>
+            <p id="greeting"></p>
+        </div>
+        <ul class="menu-items">
+            <li><a href="/Users/denisshargorodsky/Desktop/:Project4Paws/public:/index.htm"><i class="icon fas fa-user"></i>Мій профіль</a></li>
+            <li><a href="/Users/denisshargorodsky/Desktop/:Project4Paws/public:/orders.html"><i class="icon fas fa-box"></i>Мої замовлення</a></li>
+            <li><a href="#"><i class="icon fas fa-map-marker-alt"></i>Адреси доставки</a></li>
+            <li><a href="#"><i class="icon fas fa-wallet"></i>Баланс гаманця</a></li>
+            <li><a href="#"><i class="icon fas fa-credit-card"></i>Способи оплати</a></li>
+            <li><a href="#"><i class="icon fas fa-sign-out-alt"></i>Вихід</a></li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <div class="filters">
+            <h3>Фільтрація</h3>
+            <div class="filter-group">
+                <label for="price-range">Ціна (грн)</label>
+                <input type="range" id="price-range" min="0" max="30000" step="500" value="15000">
+                <span id="price-range-value">0 - 15000 грн</span>
+            </div>
+            <div class="filter-group">
+                <label>Тип корму</label>
+                <label><input type="checkbox" class="food-type" value="Сухий"> Сухий</label>
+                <label><input type="checkbox" class="food-type" value="Вологий"> Вологий</label>
+                <label><input type="checkbox" class="food-type" value="Суп"> Суп</label>
+            </div>
+            <div class="filter-group">
+                <label>Вид консерв</label>
+                <label><input type="checkbox" class="food-type" value="Шматочками"> Шматочками</label>
+                <label><input type="checkbox" class="food-type" value="В соусі"> В соусі</label>
+            </div>
+            <div class="filter-group">
+                <label for="brand">Бренд</label>
+                <select id="brand">
+                    <option value="">Всі</option>
+                    <option value="Royal Canin">Royal Canin</option>
+                    <option value="4 лапи">4 лапи</option>
+                    <option value="Purina">Purina</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="class">Клас корму</label>
+                <select id="class">
+                    <option value="">Всі</option>
+                    <option value="Бюджетний">Бюджетний</option>
+                    <option value="Преміум">Преміум</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="size">Вага тварини</label>
+                <select id="size">
+                    <option value="">Всі</option>
+                    <option value="Малий">Малий</option>
+                    <option value="Середній">Середній</option>
+                    <option value="Великий">Великий</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="weight">Вага корму (кг)</label>
+                <input type="number" id="weight" min="0" max="10" step="0.5">
+            </div>
+        </div>
+
+        <div class="products-grid">
+   <!-- Товар 1 -->
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/2.jpeg" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/2.2.jpeg" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для собак Royal Canin French Bulldog Adult 1,5 кг</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 570.00 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+
+
+    <!-- Товар 2 -->
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/5.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/5.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для собак Brit Premium Sport 3 кг - курка</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 600.99 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+
+    <!-- Товар 2 -->
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/6.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/6.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для собак Royal Canin Maxi Adult 4 кг</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 776.00 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/7.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/7.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для цуценят Royal Canin Medium Puppy 15 кг</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 2 467.00 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/8.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/8.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для цуценят та молодих собак Pro Plan Puppy Medium 3 кг - курка</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 562.00 грн</p>
+        <p>Бренд: Pro Plan</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/9.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/9.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для собак Royal Canin Chihuahua Adult 500 г</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 200.00 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/10.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/10.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для цуценят Hill’s Science Plan Puppy Medium Breed 2,5 кг - ягня та рис</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 1 293.30 грн</p>
+        <p>Бренд: Hill’s Science</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/11.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/11.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Вологий корм для цуценят Royal Canin Gastrointestinal Puppy 195 г</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: Вологий корм</p>
+        <p>Ціна: 110.50 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/12.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/12.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для цуценят Royal Canin Yorkshire Puppy 500 г</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 246.40 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/13.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/13.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для дорослих собак великих порід Optimeal 12 кг (курка)</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 1 680.00 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/14.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/14.2.jpg" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Вологий корм для собак Brit Pate & Meat Chicken 400 г (курка та яловичина)</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: вологий корм</p>
+        <p>Ціна: 149.00 грн</p>
+        <p>Бренд: Brit Pate & Meat</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/15.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/15.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Вологий корм для собак при харчовій алергії Pro Plan Veterinary Diets HA 400 г (курка)</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: вологий корм</p>
+        <p>Ціна: 130.00 грн</p>
+        <p>Бренд: Purina Pro Plan</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/16.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/16.2.webp" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Вологий корм для собак Royal Canin Hepatic 420 г</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: вологий корм</p>
+        <p>Ціна: 131.70 грн</p>
+        <p>Бренд: Royal Canin</p>
+    </div>
+</a>
+<a href="url_to_product_page.html" class="product-card"> <!-- Замініть на реальний URL -->
+    <div class="product-image">
+        <img src="img/Dog-css/17.webp" alt="Товар 1" class="default-image">
+        <img src="img/Dog-css/17.2.jpg" alt="Товар 1 (наведення)" class="hover-image">
+    </div>
+    <div class="product-info">
+        <h3>Сухий корм для дорослих собак всіх порід Dog Chow Adult Lamb 2,5 кг (ягня)</h3>
+        <p>Категорія: Собаки</p>
+        <p>Тип: сухий корм</p>
+        <p>Ціна: 497.00 грн</p>
+        <p>Бренд: Purina</p>
+    </div>
+</a>
+    
+ 
+    
+
+    <script>
+       
+       
+        // Функція для перемикання нічної теми
+        function toggleNightMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.header').classList.toggle('dark-mode');
+            document.getElementById('dashboardMenu').classList.toggle('dark-mode');
+        }
+
+        // Функція для перемикання мови
+        function toggleLanguage() {
+            alert('Зміна мови: Ця функція буде додана.');
+        }
+
+        // Функція для показу/приховання меню особистого кабінету
+        function toggleDashboardMenu() {
+            var menu = document.getElementById('dashboardMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       const products = [
+            { id: 1, name: "Сухий корм Pedigree", price: 500, brand: "Royal Canin", type: "Сухий", class: "Бюджетний", size: "Середній", weight: 1.5, category: "Корм для собак", image: "https://via.placeholder.com/300x200" },
+            { id: 2, name: "Консерви Royal Canin", price: 800, brand: "Royal Canin", type: "Вологий", class: "Преміум", size: "Великий", weight: 0.8, category: "Корм для собак", image: "https://via.placeholder.com/300x200" },
+            { id: 3, name: "Сухий корм Purina", price: 600, brand: "Purina", type: "Сухий", class: "Економ", size: "Малий", weight: 1, category: "Корм для собак", image: "https://via.placeholder.com/300x200" },
+            { id: 4, name: "Сухий корм Hill's", price: 750, brand: "Hill's", type: "Сухий", class: "Преміум", size: "Середній", weight: 1.2, category: "Корм для собак", image: "https://via.placeholder.com/300x200" },
+            { id: 5, name: "Консерви Eukanuba", price: 950, brand: "Eukanuba", type: "Вологий", class: "Преміум", size: "Великий", weight: 1, category: "Корм для собак", image: "https://via.placeholder.com/300x200" },
+        ];
+
+        const productList = document.getElementById("product-list");
+        const priceRange = document.getElementById("price-range");
+        const priceRangeValue = document.getElementById("price-range-value");
+
+        priceRange.addEventListener("input", () => {
+            priceRangeValue.textContent = `0 - ${priceRange.value} грн`;
+        });
+
+        function renderProducts(products) {
+            productList.innerHTML = "";
+            products.forEach(product => {
+                const card = document.createElement("div");
+                card.classList.add("product-card");
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="card-body">
+                        <h3>${product.name}</h3>
+                        <p>Ціна: ${product.price} грн</p>
+                        <p>Бренд: ${product.brand}</p>
+                        <p>Тип корму: ${product.type}</p>
+                        <button class="btn">Детальніше</button>
+                    </div>
+                `;
+                productList.appendChild(card);
+            });
+        }
+
+        renderProducts(products);
+    </script>
+</body>
+</html>

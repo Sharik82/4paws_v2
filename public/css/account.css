@@ -1,0 +1,127 @@
+/* Основні стилі для меню */
+.dashboard-menu {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Стиль заголовка та привітання */
+.dashboard-header h2 {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Список пунктів меню */
+.menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-items li {
+    margin: 15px 0;
+}
+
+.menu-items a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-items a:hover {
+    background-color: #e0f5e9; /* Світло-зелений */
+    color: #27ae60; /* Зелений */
+}
+
+.menu-items a .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #27ae60; /* Іконки зеленого кольору */
+}
+
+.menu-items a:hover .icon {
+    transform: scale(1.2); /* Збільшення іконки при наведенні */
+    transition: transform 0.3s;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 600px) {
+    .dashboard-menu {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .menu-items a {
+        font-size: 16px;
+    }
+}
+/* Анімація появи меню */
+.dashboard-menu {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInMenu 0.5s forwards;
+}
+
+@keyframes fadeInMenu {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Стилі для кнопки в меню */
+.menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-btn i {
+    margin-right: 10px;
+}
+
+.menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* Панель налаштувань */
+.settings-panel {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.settings-panel h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.settings-panel p {
+    color: #666;
+    font-size: 16px;
+}
+
+

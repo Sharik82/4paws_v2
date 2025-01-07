@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій профіль</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="../img/header/logo.jpg">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+        .greeting {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .profile-header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .profile-header p {
+            margin: 5px 0;
+            color: #777;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .info div {
+            flex: 1;
+        }
+
+        .edit-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #28a745;
+            transition: color 0.3s ease;
+        }
+
+        .edit-icon:hover {
+            color: #218838;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"] {
+            font-size: 16px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .cabinet-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-shadow: inset -1px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h3 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #4CAF50;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cabinet-container">
+        <div class="sidebar">
+            <h3>Мій Кабінет</h3>
+            <ul>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Профіль</a></li>
+                <li><a href="orders.html"><i class="fas fa-box"></i> Мої замовлення</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Методи оплати</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Налаштування</a></li>
+                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Вийти</a></li>
+            </ul>
+        </div>
+
+
+    <div class="container">
+    <!-- Привітання -->
+    <div class="greeting" id="greeting">Добрий день!</div>
+
+    <div class="profile-header">
+        <img id="profile-pic" src="https://via.placeholder.com/120" alt="Фото профілю">
+        <input type="file" id="upload-pic" accept="image/*" style="display: none;">
+        <div>
+            <h1 id="username">Ім'я Користувача</h1>
+            <p id="user-email">user@email.com</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Особисті дані</h2>
+        <div class="info">
+            <div>
+                <p><strong>Ім'я:</strong> <span id="first-name">Іван</span></p>
+                <p><strong>Прізвище:</strong> <span id="last-name">Іванов</span></p>
+                <p><strong>Телефон:</strong> <span id="phone">+380 96 123 4567</span></p>
+                <p><strong>Email:</strong> <span id="email">user@email.com</span></p>
+            </div>
+            <button class="edit-icon" onclick="editSection('first-name', 'last-name', 'phone', 'email', 'username')">
+                <i class="fas fa-pen"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="logout-btn">Вийти з акаунту</button>
+</div>
+
+<script>
+    // Привітання залежно від часу доби
+    function updateGreeting() {
+        const greetingElement = document.getElementById('greeting');
+        const now = new Date();
+        const hours = now.getHours();
+
+        let greeting = 'Добрий день!';
+        if (hours >= 5 && hours < 12) {
+            greeting = 'Доброго ранку!';
+        } else if (hours >= 12 && hours < 18) {
+            greeting = 'Добрий день!';
+        } else if (hours >= 18 && hours < 23) {
+            greeting = 'Доброго вечора!';
+        } else {
+            greeting = 'Доброї ночі!';
+        }
+
+        greetingElement.innerText = greeting;
+    }
+
+    // Редагування даних профілю
+    function editSection(...fields) {
+        fields.forEach(field => {
+            const element = document.getElementById(field);
+            const currentValue = element.innerText;
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentValue;
+            input.id = `${field}-input`;
+
+            element.replaceWith(input);
+        });
+
+        const saveButton = document.createElement('button');
+        saveButton.innerText = 'Зберегти';
+        saveButton.classList.add('edit-icon');
+        saveButton.onclick = () => saveChanges(fields);
+        document.querySelector('.edit-icon').replaceWith(saveButton);
+    }
+
+    function saveChanges(fields) {
+        fields.forEach(field => {
+            const input = document.getElementById(`${field}-input`);
+            const newValue = input.value;
+
+            const span = document.createElement('span');
+            span.innerText = newValue;
+            span.id = field;
+
+            input.replaceWith(span);
+            localStorage.setItem(field, newValue);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateGreeting();
+        const fields = ['first-name', 'last-name', 'phone', 'email', 'username'];
+
+        fields.forEach(field => {
+            const savedValue = localStorage.getItem(field);
+            if (savedValue) {
+                document.getElementById(field).innerText = savedValue;
+            }
+        });
+
+        const savedPic = localStorage.getItem('profile-pic');
+        if (savedPic) {
+            document.getElementById('profile-pic').src = savedPic;
+        }
+    });
+
+    document.getElementById('profile-pic').onclick = () => {
+        document.getElementById('upload-pic').click();
+    };
+
+    document.getElementById('upload-pic').addEventListener('change', function () {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('profile-pic').src = e.target.result;
+            localStorage.setItem('profile-pic', e.target.result);
+        };
+        reader.readAsDataURL(this.files[0]);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення - 4 Paws</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .checkout-container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 1000px;
+            width: 90%;
+        }
+        .checkout-header {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2ea043;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="tel"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .address-group {
+            display: flex;
+            gap: 10px;
+        }
+        .address-group input {
+            flex: 1;
+        }
+        .checkout-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+        .order-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .summary-item img {
+            width: 70px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        .item-details {
+            flex-grow: 1;
+            text-align: left;
+        }
+        .item-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .item-price {
+            font-size: 14px;
+            color: #666;
+        }
+        .total {
+            font-weight: 700;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="checkout-header">Оформлення замовлення</div>
+        <form action="/submit-order" method="POST">
+            <div class="form-group">
+                <label for="fullName">ФІО</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Місто</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="deliveryMethod">Спосіб доставки</label>
+                <select id="deliveryMethod" name="deliveryMethod" required>
+                    <option value="novaposhta">Нова Пошта - адресна доставка</option>
+                    <option value="ukrposhta">Укрпошта</option>
+                    <option value="selfpickup">Самовивіз</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Адреса</label>
+                <div class="address-group">
+                    <input type="text" name="street" placeholder="Вулиця" required>
+                    <input type="text" name="building" placeholder="Будинок">
+                    <input type="text" name="apartment" placeholder="Квартира">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="paymentMethod">Спосіб оплати</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="card">Оплата карткою</option>
+                    <option value="cash">Готівкою при отриманні</option>
+                </select>
+            </div>
+            <div class="order-summary">
+                <div class="summary-item">
+                    <img src="/public/images/products/dog-cloak.jpg" alt="Різдвяна попона">
+                    <div class="item-details">
+                        <div class="item-name">Різдвяна попона для собак Trixie Санта XS</div>
+                        <div class="item-price">299.00 грн</div>
+                    </div>
+                </div>
+                <div class="summary-item total">
+                    <span>Доставка</span>
+                    <span>99.00 грн</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Всього</span>
+                    <span>398.00 грн</span>
+                </div>
+            </div>
+            <button type="submit" class="checkout-btn">Оформити замовлення</button>
+        </form>
+    </div>
+</body>
+</html>
