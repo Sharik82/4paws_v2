@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - Зоомагазин</title>
+    <link rel="stylesheet" href="/Users/denisshargorodsky/Desktop/registration window /main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+        }
+
+        .header {
+            background-color: #fff;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #28a745;
+            transform: translateY(-3px);
+        }
+
+        .nav a img {
+            width: 20px;
+            margin-right: 8px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            margin-left: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .user-menu a:hover {
+            color: #28a745;
+            transform: scale(1.1);
+        }
+
+        .user-menu a img {
+            width: 25px;
+            margin-right: 5px;
+        }
+
+        .contact-container {
+            display: flex;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            opacity: 0; /* Спочатку приховане */
+            animation: fadeIn 1s forwards; /* Анімація */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Плавний перехід знизу */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .map {
+            flex: 1;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        .info {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .info .icon {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .info .icon i {
+            margin-right: 10px;
+            color: #28a745;
+        }
+
+        .info img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        /* Кнопки */
+        .button {
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Футер */
+        .footer {
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+            padding: 20px;
+            text-align: center;
+            transition: background 0.5s ease;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer h3 {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .footer p,
+        .footer a {
+            color: #555;
+            margin: 5px 0;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #28a745;
+            transform: translateY(-3px);
+        }
+
+        .contact-info i,
+        .social-media i {
+            margin-right: 10px;
+            color: #28a745; /* Adjust icon color */
+            font-size: 24px;
+        }
+
+        .social-media a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .social-media a i {
+            font-size: 20px;
+        }
+
+        .social-media a:hover {
+            color: #28a745; /* Change to the desired hover color */
+            transform: translateY(-3px);
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="/Users/denisshargorodsky/Desktop/registration window /main.html">
+                <img src="/Users/denisshargorodsky/Desktop/registration window /Phot/free-icon-paws-4225935 копія.png" alt="Лого">
+                <span>4 Paws</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/dog-solid.svg" alt="Собакам">Собакам</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/cat-solid.svg" alt="Котам">Котам</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/Знімок екрана 2024-10-12 о 00.36.48.png" alt="Гризунам">Гризунам</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/fish-solid.svg" alt="Рибам">Рибам</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/dove-solid.svg" alt="Птахам">Птахам</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/staff-snake-solid.svg" alt="Рептиліям">Рептиліям</a>
+        </nav>
+        <div class="user-menu">
+            <a href="/Users/denisshargorodsky/Desktop/registration window /index.htm"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/user-solid.svg" alt="Профіль">Профіль</a>
+            <a href="/Users/denisshargorodsky/Desktop/registration window /basket.html"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/basket-shopping-solid.svg" alt="Кошик">Кошик</a>
+            <a href="#"><img src="/Users/denisshargorodsky/Desktop/registration window /Phot/envelope-solid.svg" alt="Контакти">Контакти</a>
+        </div>
+    </header>
+
+    <div class="contact-container">
+        <div class="map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2055517056826!2d-122.42660068468129!3d37.77693867976043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809b39d006d7%3A0x8cfd2f2d1c5980af!2s4%20Paws%20Pet%20Store!5e0!3m2!1sen!2sus!4v1600418239007!5m2!1sen!2sus" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="info">
+            <h2>Контактна інформація</h2>
+            <div class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Адреса: вул. Тваринна, 1, Київ</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-phone-alt"></i>
+                <p>Телефон: +380 12 345 67 89</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-envelope"></i>
+                <p>Email: contact@4paws.com</p>
+            </div>
+            <button class="button">Написати нам</button>
+            <h3>Фотографії магазину</h3>
+            <img src="/Users/denisshargorodsky/Desktop/registration window /Phot/shop-photo.jpg" alt="Фотографії магазину">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3><i class="fas fa-phone-alt"></i> Контактна інформація</h3>
+                <p>Телефон: +380 12 345 67 89</p>
+                <p>Електронна пошта: info@4paws.com</p>
+            </div>
+            <div class="social-media">
+                <h3><i class="fab fa-facebook"></i> Ми в соцмережах</h3>
+                <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
