@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зоомагазин - Шапка</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="/public/images/header/logo.jpg">
+  <style>
+      body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            background-color: #fff;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .search-container {
+    position: relative; /* Додано для вирівнювання результатів */
+    display: flex;
+    align-items: center;
+    border: 2px solid #28a745;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+    margin-left: 20px;
+}
+
+.search-container input {
+    width: 180px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+    transition: width 0.3s ease;
+}
+
+.search-container input:focus {
+    width: 250px;
+    transition: width 0.4s ease;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #28a745;
+    font-size: 18px;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.search-container button:hover {
+    color: #000;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 5px); /* Вирівнювання одразу під полем вводу */
+    left: 0;
+    width: 100%; /* Робимо ширину рівною ширині поля вводу */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+    display: none;
+    padding: 10px;
+}
+
+.search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-results li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-results li:hover {
+    background-color: #f5f5f5;
+}
+
+.search-results img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.search-results span {
+    font-size: 14px;
+    color: #333;
+}
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .nav a:hover {
+            color: #28a745;
+            transform: translateY(-3px);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-btn {
+            background: #28a745;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-left: 15px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background: #218838;
+            transform: scale(1.1);
+        }
+
+        /* Стилі для нових елементів */
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #28a745;
+            font-size: 24px;
+            margin-left: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #218838;
+            transform: scale(1.2);
+        }
+
+        .night-mode-toggle i, .lang-switch i, .cart-icon i {
+            transition: transform 0.3s ease;
+        }
+
+        .night-mode-toggle:hover i, .lang-switch:hover i, .cart-icon:hover i {
+            transform: rotate(20deg);
+        }
+
+        /* Темна тема */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .header.dark-mode {
+            background-color: #222;
+        }
+
+        .dashboard-menu {
+    display: none; /* Приховати за замовчуванням */
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+}
+
+.dashboard-menu.active {
+    display: block; /* Показати при додаванні класу active */
+}
+
+        .menu-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items li {
+            margin: 10px 0; /* Зменшено */
+        }
+
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            padding: 8px; /* Зменшено */
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-items a:hover {
+            background-color: #e0f5e9;
+            color: #27ae60;
+        }
+
+        .menu-items a .icon {
+            margin-right: 10px;
+            font-size: 18px; /* Зменшено */
+            color: #27ae60;
+        }
+        .dashboard-menu.dark-mode {
+            background-color: #444;
+        }
+
+        /* Кошик */
+        #cartButton {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1003; /* Високий пріоритет, щоб було поверх інших елементів */
+    pointer-events: auto; /* Впевніться, що іконка реагує на кліки */
+}
+
+.cart-menu {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1002; /* Трохи нижчий пріоритет від іконки */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Блокуємо кліки, коли кошик закритий */
+}
+
+.cart-menu.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Дозволяємо кліки, коли кошик відкритий */
+}
+
+
+
+/* Кнопка закриття кошика */
+.close-cart {
+    background: none;
+    color: #ff0000;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Товари в кошику */
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.cart-item .item-info {
+    flex-grow: 1;
+}
+
+.cart-item .item-remove {
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.cart-item .item-remove:hover {
+    color: #ff0000;
+}
+
+.cart-item .item-remove::before {
+    content: '\f1f8';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/* Загальна сума */
+.cart-total {
+    text-align: right;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Кнопка оформлення замовлення */
+.checkout-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background: #218838;
+}
+
+/* Сучасний дизайн сповіщень */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-size: 16px;
+    z-index: 1004; /* Найвищий пріоритет */
+    pointer-events: none; /* Блокуємо взаємодію */
+}
+
+.notification i {
+    font-size: 20px;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: none; /* Навіть у видимому стані не перехоплює кліки */
+}
+
+.notification.success {
+    background-color: #28a745;
+}
+
+.notification.error {
+    background-color: #ff4b4b;
+}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+      text-align: center;
+    }
+        /* Шапка */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-menu a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+
+    /* Заголовок */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .section-header .arrow-link {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      font-size: 18px;
+      color: #27ae60;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .section-header .arrow-link:hover {
+      transform: translateX(5px);
+    }
+
+    .section-header .arrow-link svg {
+      margin-left: 5px;
+      fill: #27ae60;
+      transition: fill 0.3s ease;
+    }
+
+    .section-header .arrow-link:hover svg {
+      fill: #219150;
+    }
+
+    /* Сітка товарів */
+    .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Адаптивне вирівнювання плиток */
+  gap: 25px; /* Збільшення відступу між плитками */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.product-card {
+    width: 180px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-card .discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.product-info {
+    margin-top: 10px;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.price-section {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.old-price {
+    font-size: 14px;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.new-price {
+    font-size: 16px;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Відступ між кнопками */
+    margin-top: 10px;
+}
+
+.buy-button {
+    padding: 8px 15px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #219150;
+}
+
+.info-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px; /* Розмір кнопки */
+    height: 28px; /* Розмір кнопки */
+    background-color: transparent; /* Прозорий фон */
+    color: #27ae60; /* Зелений текст і рамка */
+    border: 2px solid #27ae60; /* Зелена рамка */
+    border-radius: 50%; /* Кругла форма */
+    font-size: 18px; /* Розмір шрифту */
+    font-weight: bold; /* Жирний текст */
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.info-button:hover {
+    background-color: #27ae60; /* Зелений фон при наведенні */
+    color: #fff; /* Білий текст при наведенні */
+    transform: scale(1.1); /* Легке збільшення при наведенні */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Легка тінь */
+}
+
+.info-button i {
+    pointer-events: none; /* Іконка не перехоплює кліки */
+    font-style: normal; /* Робимо текст простим */
+    line-height: 1; /* Вирівнювання тексту */
+}
+
+
+
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/header/logo.jpg" alt="Лого">
+                <span>4 Paws</span>
+            </a>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Пошук..." oninput="searchProducts()">
+                <button type="button"><i class="fas fa-search"></i></button>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="Dog product category.html"><img src="img/header/dog-solid.svg" alt="Собакам">Собакам</a>
+            <a href="#"><img src="img/header/cat-solid.svg" alt="Котам">Котам</a>
+            <a href="#"><img src="img/header/mouse.png" alt="Гризунам">Гризунам</a>
+            <a href="#"><img src="img/header/fish-solid.svg" alt="Рибам">Рибам</a>
+            <a href="#"><img src="img/header/dove-solid.svg" alt="Птахам">Птахам</a>
+            <a href="#"><img src="img/header/staff-snake-solid.svg" alt="Рептиліям">Рептиліям</a>
+        </nav>
+        <div class="user-menu">
+            <button class="menu-btn" onclick="toggleDashboardMenu()">
+                <i class="fas fa-user"></i>
+            </button>
+            <button id="cartButton" class="icon-btn cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button class="icon-btn night-mode-toggle" onclick="toggleNightMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn lang-switch" onclick="toggleLanguage()">
+                <i class="fas fa-language"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Винесений блок кошика поза user-menu -->
+    <div id="cartMenu" class="cart-menu">
+        <button class="close-cart" onclick="closeCart()">×</button>
+        <h3>Ваш кошик</h3>
+        <div id="cartItems" class="cart-items"></div>
+        <div id="cartTotal" class="cart-total">Загальна сума: 0.00 грн</div>
+        <button class="checkout-btn">Оформити замовлення</button>
+    </div>
+    
+
+    <div class="dashboard-menu" id="dashboardMenu">
+        <div class="dashboard-header">
+            <h2>Особистий кабінет</h2>
+            <p id="greeting"></p>
+        </div>
+        <ul class="menu-items">
+            <li><a href="ac beta.html"><i class="icon fas fa-user"></i>Мій профіль</a></li>
+            <li><a href="/Users/denisshargorodsky/Desktop/:Project4Paws/public:/orders.html"><i class="icon fas fa-box"></i>Мої замовлення</a></li>
+            <li><a href="#"><i class="icon fas fa-map-marker-alt"></i>Адреси доставки</a></li>
+            <li><a href="#"><i class="icon fas fa-wallet"></i>Баланс гаманця</a></li>
+            <li><a href="#"><i class="icon fas fa-credit-card"></i>Способи оплати</a></li>
+            <li><a href="#"><i class="icon fas fa-sign-out-alt"></i>Вихід</a></li>
+        </ul>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    
+
+  
+
+
+
+
+
+
+
+  <div class="container">
+    <!-- Заголовок -->
+    <div class="section-header">
+      <span>Акції та знижки</span>
+      <a href="discounted-products.html" class="arrow-link">
+        Всі товари зі знижками
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M10.854 8.354a.5.5 0 0 1 0-.708L13.207 5.5H3.5a.5.5 0 0 1 0-1h9.707L10.854 3.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Сітка товарів -->
+    <div class="product-grid">
+      <!-- Товар -->
+      <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/5.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+      <!-- Повторюйте цей блок для інших товарів -->
+      <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/16.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="discount">-10%</div>
+        <img src="/Users/denisshargorodsky/Desktop/4paws/public/img/Dog-css/8.webp" alt="Товар">
+        <div class="product-info">
+            <h3>Сухий корм для собак Brit Premium Sport</h3>
+            <div class="price-section">
+                <span class="old-price">630.00 грн</span>
+                <span class="new-price">570.00 грн</span>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-button" onclick="addToCart('Сухий корм для собак Brit Premium Sport', 570, 'img/Dog-css/3.webp')">
+                    Купити
+                </button>
+                <a href="product-details.html" class="info-button" title="Деталі товару">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+        
+    
+    
+      
+   
+</div>
+</body>
+    
+          
+        
+
+
+
+          
+          
+          
+          
+    
+     
+          
+
+<script>
+
+function searchProducts() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const searchResults = document.getElementById('searchResults');
+    const productCards = document.querySelectorAll('.product-card');
+
+    // Очищення результатів, якщо запит порожній
+    if (query === '') {
+        searchResults.style.display = 'none';
+        return;
+    }
+
+    let resultsHTML = '';
+    productCards.forEach(card => {
+        const productName = card.querySelector('.product-info h3').innerText.toLowerCase();
+        const productPrice = card.querySelector('.new-price').innerText;
+        const productImage = card.querySelector('img').getAttribute('src');
+        const productUrl = card.querySelector('.buy-button').getAttribute('href');
+
+        // Перевірка збігів у назві
+        if (productName.includes(query)) {
+            resultsHTML += `
+                <li onclick="redirectToProduct('${productUrl}')">
+                    <img src="${productImage}" alt="${productName}">
+                    <span>${productName} — ${productPrice}</span>
+                </li>
+            `;
+        }
+    });
+
+    // Відображення результатів або повідомлення про відсутність збігів
+    if (resultsHTML) {
+        searchResults.innerHTML = `<ul>${resultsHTML}</ul>`;
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.innerHTML = '<p>Нічого не знайдено</p>';
+        searchResults.style.display = 'block';
+    }
+}
+
+function redirectToProduct(url) {
+    window.location.href = url; // Перенаправлення на сторінку товару
+}
+
+
+
+
+
+          
+
+
+
+
+
+
+
+
+let cartItems = []; // Масив для зберігання товарів у кошику
+
+// Функція для показу сповіщень
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.innerText = message;
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 2000);
+}
+
+// Додавання товару до кошика
+function addToCart(productName, productPrice, productImage) {
+    cartItems.push({ name: productName, price: parseFloat(productPrice), image: productImage });
+    updateCart();
+    showNotification(`Товар "${productName}" додано до кошика!`);
+    openCart(); // Відкриваємо кошик автоматично після додавання
+}
+
+// Оновлення вмісту кошика
+function updateCart() {
+    const cartList = document.getElementById('cartItems');
+    const totalPriceElement = document.getElementById('cartTotal');
+    let total = 0;
+    let cartHTML = '';
+
+    cartItems.forEach(item => {
+        total += item.price;
+        cartHTML += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="item-info">
+                    <p>${item.name}</p>
+                    <p>${item.price.toFixed(2)} грн</p>
+                </div>
+                <button class="item-remove" onclick="removeItem('${item.name}')">Видалити</button>
+            </div>
+        `;
+    });
+
+    cartList.innerHTML = cartHTML;
+    totalPriceElement.innerText = `Загальна сума: ${total.toFixed(2)} грн`;
+}
+
+// Видалення товару з кошика
+function removeItem(productName) {
+    cartItems = cartItems.filter(item => item.name !== productName);
+    updateCart();
+}
+
+// Відкриття кошика
+function openCart() {
+    const cartMenu = document.getElementById('cartMenu');
+    cartMenu.classList.add('active');
+}
+
+// Закриття кошика
+function closeCart() {
+    const cartMenu = document.getElementById('cartMenu');
+    cartMenu.classList.remove('active');
+}
+
+// Додавання обробника для іконки кошика
+document.getElementById('cartButton').addEventListener('click', () => {
+    const cartMenu = document.getElementById('cartMenu');
+    cartMenu.classList.toggle('active');
+});
+
+
+
+
+
+function toggleDashboardMenu() {
+    const dashboardMenu = document.getElementById('dashboardMenu');
+    dashboardMenu.classList.toggle('active');
+}
+
+document.getElementById('cartButton').addEventListener('click', () => {
+    const cartMenu = document.getElementById('cartMenu');
+    cartMenu.classList.toggle('active');
+});
+
+document.querySelector('.menu-btn').addEventListener('click', toggleDashboardMenu);
+
+
+
+    
+     
+       
+            
+document.getElementById('cartButton').addEventListener('click', () => {
+    const cartMenu = document.getElementById('cartMenu');
+    cartMenu.classList.toggle('active');
+});
+
+            
+
+
+
+
+
+    
+</script>
+
+
+    
+</html>

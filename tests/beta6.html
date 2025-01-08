@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зоомагазин - Шапка та Кошик</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            background-color: #fff;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #28a745;
+            border-radius: 20px;
+            padding: 5px;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .search-container input {
+            width: 180px;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #333;
+            transition: width 0.3s ease;
+        }
+
+        .search-container input:focus {
+            width: 250px;
+            transition: width 0.4s ease;
+        }
+
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #28a745;
+            font-size: 18px;
+            margin-left: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            color: #000;
+        }
+
+        
+        .search-results {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    z-index: 1002;
+    display: none; /* Початково приховано */
+    padding: 10px;
+}
+
+.search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-results li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-results li:hover {
+    background-color: #f5f5f5;
+}
+
+.search-results img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.search-results span {
+    font-size: 14px;
+    color: #333;
+}
+
+        
+        
+        
+        
+        
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .nav a:hover {
+            color: #28a745;
+            transform: translateY(-3px);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-btn, .cart-icon {
+            background: #28a745;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-left: 15px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-btn:hover, .cart-icon:hover {
+            background: #218838;
+            transform: scale(1.1);
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #28a745;
+            font-size: 24px;
+            margin-left: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #218838;
+            transform: scale(1.2);
+        }
+
+        .night-mode-toggle i, .lang-switch i, .cart-icon i {
+            transition: transform 0.3s ease;
+        }
+
+        .night-mode-toggle:hover i, .lang-switch:hover i, .cart-icon:hover i {
+            transform: rotate(20deg);
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .header.dark-mode {
+            background-color: #222;
+        }
+
+        .dashboard-menu, .cart-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 30px;
+            width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 1001;
+        }
+
+        .dashboard-menu.dark-mode, .cart-menu.dark-mode {
+            background-color: #444;
+        }
+
+        .menu-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu-items a:hover {
+            background-color: #e0f5e9;
+            color: #27ae60;
+        }
+
+        .menu-items a .icon {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #27ae60;
+        }
+
+        .cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .cart-item .item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item .item-remove {
+            color: #ff0000;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+
+
+
+
+        /* Ваш CSS залишився без змін */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .product .price {
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="#"><img src="testlogo.jpg" alt="Лого"><span>4 Paws</span></a>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Пошук..." oninput="searchProducts()">
+                <button type="button"><i class="fas fa-search"></i></button>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            
+        </div>
+        <nav class="nav" id="navMenu">
+            <a href="#"><img src="dog-solid.svg" alt="Собакам">Собакам</a>
+            <a href="#"><img src="cat-solid.svg" alt="Котам">Котам</a>
+            <a href="#"><img src="hamster-solid.svg" alt="Гризунам">Гризунам</a>
+            <a href="#"><img src="fish-solid.svg" alt="Рибам">Рибам</a>
+            <a href="#"><img src="dove-solid.svg" alt="Птахам">Птахам</a>
+            <a href="#"><img src="snake-solid.svg" alt="Рептиліям">Рептиліям</a>
+        </nav>
+        <div class="user-menu">
+            <button class="menu-btn" onclick="toggleDashboardMenu()">
+                <i class="fas fa-user"></i>
+            </button>
+            <button class="cart-icon" onclick="toggleCartMenu()">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button class="icon-btn night-mode-toggle" onclick="toggleNightMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn lang-switch" onclick="toggleLanguage()">
+                <i class="fas fa-language"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="products">
+        <div class="product">
+            <img src="dog-food.jpg" alt="Dog Food">
+            <h3 data-uk="Сухий корм для собак" data-en="Dry Dog Food">Сухий корм для собак</h3>
+            <p class="price">350 грн</p>
+            <button onclick="addToCart('Сухий корм для собак', 350, 'dog-food.jpg')">Додати в кошик</button>
+        </div>
+        <div class="product">
+            <img src="cat-food.jpg" alt="Cat Food">
+            <h3 data-uk="Сухий корм для котів" data-en="Dry Cat Food">Сухий корм для котів</h3>
+            <p class="price">300 грн</p>
+            <button onclick="addToCart('Сухий корм для котів', 300, 'cat-food.jpg')">Додати в кошик</button>
+        </div>
+        <div class="product">
+            <img src="hamster-food.jpg" alt="Hamster Food">
+            <h3 data-uk="Корм для гризунів" data-en="Hamster Food">Корм для гризунів</h3>
+            <p class="price">150 грн</p>
+            <button onclick="addToCart('Корм для гризунів', 150, 'hamster-food.jpg')">Додати в кошик</button>
+        </div>
+    </div>
+
+    <div class="cart-menu" id="cartMenu">
+        <ul class="cart-items">
+            <!-- Товари будуть додані динамічно -->
+        </ul>
+        <div class="cart-total">
+            <strong>Всього: 0 грн</strong>
+        </div>
+    </div>
+
+    <script>
+        
+        
+        function searchProducts() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const searchResults = document.getElementById('searchResults');
+    const products = [
+        { name: 'Сухий корм для собак', price: 350, img: 'dog-food.jpg' },
+        { name: 'Сухий корм для котів', price: 300, img: 'cat-food.jpg' },
+        { name: 'Корм для гризунів', price: 150, img: 'hamster-food.jpg' },
+    ];
+
+    if (query === '') {
+        searchResults.style.display = 'none';
+        return;
+    }
+
+    const matchedProducts = products.filter(product =>
+        product.name.toLowerCase().includes(query)
+    );
+
+    if (matchedProducts.length > 0) {
+        const resultsHTML = matchedProducts.map(product => `
+            <li onclick="selectProduct('${product.name}', ${product.price}, '${product.img}')">
+                <img src="${product.img}" alt="${product.name}">
+                <span>${product.name} — ${product.price} грн</span>
+            </li>
+        `).join('');
+        searchResults.innerHTML = `<ul>${resultsHTML}</ul>`;
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.innerHTML = '<p>Нічого не знайдено</p>';
+        searchResults.style.display = 'block';
+    }
+}
+
+function selectProduct(name, price, imgSrc) {
+    addToCart(name, price, imgSrc);
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').style.display = 'none';
+}
+
+        
+        
+        
+        
+        
+        
+        function toggleDashboardMenu() {
+            const menu = document.getElementById('dashboardMenu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleCartMenu() {
+            const cartMenu = document.getElementById('cartMenu');
+            cartMenu.style.display = (cartMenu.style.display === 'none' || cartMenu.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleNightMode() {
+            document.body.classList.toggle('dark-mode');
+            document.getElementById('cartMenu').classList.toggle('dark-mode');
+        }
+
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'uk' ? 'en' : 'uk';
+            document.documentElement.lang = newLang;
+
+            const elements = document.querySelectorAll('[data-uk][data-en]');
+            elements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${newLang}`);
+            });
+        }
+
+        function addToCart(name, price, imgSrc) {
+            const cartItems = document.querySelector('.cart-items');
+            const cartItem = document.createElement('li');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <img src="${imgSrc}" alt="${name}">
+                <div class="item-info">
+                    <span>${name}</span>
+                    <br>
+                    <small>1 шт. — ${price} грн</small>
+                </div>
+                <span class="item-remove" onclick="removeCartItem(this)">&times;</span>
+            `;
+            cartItems.appendChild(cartItem);
+            updateCartTotal();
+        }
+
+        function removeCartItem(item) {
+            const cartItem = item.parentElement;
+            cartItem.remove();
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            let total = 0;
+            cartItems.forEach(item => {
+                const priceText = item.querySelector('.item-info small').innerText;
+                const price = parseInt(priceText.split('—')[1].trim());
+                total += price;
+            });
+            document.querySelector('.cart-total strong').innerText = `Всього: ${total} грн`;
+        }
+    </script>
+</body>
+</html>
