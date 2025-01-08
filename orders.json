@@ -1,0 +1,47 @@
+[
+    {
+        "fullName": "\u0448\u0430\u0440\u0433\u043e\u0440\u043e\u0434\u0441\u044c\u043a\u0438\u0439 ",
+        "phone": "961751352",
+        "city": "\u0443",
+        "deliveryMethod": "novaposhta",
+        "address": "\u0443, 22, 1",
+        "paymentMethod": "cash",
+        "createdAt": "2025-01-08 19:12:41"
+    },
+    {
+        "fullName": "\u0412\u0438\u0441\u043e\u0446\u044c\u043a\u0438\u0439",
+        "phone": "961751352",
+        "city": "\u0443",
+        "deliveryMethod": "novaposhta",
+        "address": "\u0443, 22, 1",
+        "paymentMethod": "cash",
+        "createdAt": "2025-01-08 19:13:33"
+    },
+    {
+        "fullName": "\u0425\u0443\u0439",
+        "phone": "961751352",
+        "city": "\u0443",
+        "deliveryMethod": "novaposhta",
+        "address": "\u0443, 22, 1",
+        "paymentMethod": "cash",
+        "createdAt": "2025-01-08 19:18:41"
+    },
+    {
+        "fullName": "\u0425\u0443\u0439",
+        "phone": "961751352",
+        "city": "\u0443",
+        "deliveryMethod": "novaposhta",
+        "address": "\u0443, 22, 1",
+        "paymentMethod": "cash",
+        "createdAt": "2025-01-08 19:19:35"
+    },
+    {
+        "fullName": "\u0425\u0443\u0439",
+        "phone": "961751352",
+        "city": "\u043b\u043e\u0449",
+        "deliveryMethod": "novaposhta",
+        "address": "\u0443, 22, 1",
+        "paymentMethod": "cash",
+        "createdAt": "2025-01-08 19:19:52"
+    }
+]

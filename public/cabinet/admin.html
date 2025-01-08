@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін панель - Замовлення</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+    <h1>Список замовлень</h1>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Телефон</th>
+                <th>Місто</th>
+                <th>Адреса</th>
+                <th>Доставка</th>
+                <th>Оплата</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.fullName }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.deliveryMethod }}</td>
+                <td>{{ order.paymentMethod }}</td>
+                <td>{{ order.createdAt }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
